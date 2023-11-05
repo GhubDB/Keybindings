@@ -1,4 +1,9 @@
-﻿^!r::
+﻿GroupAdd, CodeEditors, ahk_class Qt5152QWindowIcon
+GroupAdd, CodeEditors, ahk_class Chrome_WidgetWin_1
+GroupAdd, CodeEditors, ahk_class SunAwtFrame
+#IfWinActive, ahk_group CodeEditors
+
+^!r::
     ToolTip, PROgramming keys reloading
     Sleep 1000 
     Reload 
@@ -7,7 +12,6 @@
 ; Suspend and unsuspend hotkeys
 !<:: Suspend 
 
-; Remap ö to AltGr+ö
 ö::Send, {{} 
 
 ; Remap Shift+ö to AltGr+ä
