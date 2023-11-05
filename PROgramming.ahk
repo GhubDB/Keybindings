@@ -4,8 +4,7 @@
     Reload 
     Tooltip
 
-ScriptEnabled := 1
-
+; Suspend and unsuspend hotkeys
 !<:: Suspend 
 
 ; Remap ö to AltGr+ö
