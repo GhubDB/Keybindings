@@ -1,6 +1,8 @@
 ﻿GroupAdd, CodeEditors, ahk_class Qt5152QWindowIcon
 GroupAdd, CodeEditors, ahk_class Chrome_WidgetWin_1
 GroupAdd, CodeEditors, ahk_class SunAwtFrame
+SetTitleMatchMode, 2
+GroupAdd, CodeEditors, Microsoft Visual Studio
 #IfWinActive, ahk_group CodeEditors
 
 ^!r::
