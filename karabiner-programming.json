@@ -1,130 +1,130 @@
 {
-    "title": "German mapping for programming (/, \\, |, {}, [], ~) (rev 2)",
-    "rules": [
-      {
-        "description": "German mapping for programming (/, \\, |, {}, [], ~) (rev 2)",
-        "manipulators": [
-          {
-            "from": {
-              "key_code": "semicolon",
-              "modifiers": {
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "8",
-                "modifiers": [
-                  "left_option"
-                ]
-              }
-            ],
-            "type": "basic"
+  "title": "PROgramming",
+  "rules": [
+    {
+      "description": "ö to {",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "semicolon"
           },
-          {
-            "from": {
-              "key_code": "semicolon",
-              "modifiers": {
-                "mandatory": [
-                  "left_shift"
-                ],
-                "optional": [
-                  "any"
-                ]
-              }
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "8",
+              "modifiers": [
+                "left_alt"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "shift ö to }",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": [
+                "left_shift"
+              ]
             },
-            "to": [
-              {
-                "key_code": "9",
-                "modifiers": [
-                  "left_option"
-                ]
-              }
-            ],
-            "type": "basic"
+            "key_code": "semicolon"
           },
-          {
-            "from": {
-              "key_code": "quote",
-              "modifiers": {
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "equal_sign",
-                "modifiers": [
-                  "left_shift"
-                 ]
-              }
-            ],
-            "type": "basic"
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "9",
+              "modifiers": [
+                "left_alt"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ü to [",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket"
           },
-          {
-            "from": {
-              "key_code": "quote",
-              "modifiers": {
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "equal_sign",
-                "modifiers": [ ]
-              }
-            ],
-            "type": "basic"
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "5",
+              "modifiers": [
+                "left_alt"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "shift + ü to ]",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "semicolon"
           },
-          {
-            "from": {
-              "key_code": "open_bracket",
-              "modifiers": {
-                "mandatory": [ ],
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "5",
-                "modifiers": [
-                  "left_option"
-                ]
-              }
-            ],
-            "type": "basic"
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "6",
+              "modifiers": [
+                "left_alt"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ä to `",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "quote"
           },
-          {
-            "from": {
-              "key_code": "open_bracket",
-              "modifiers": {
-                "mandatory": [
-                  "left_shift"
-                ],
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "6",
-                "modifiers": [
-                  "left_option"
-                ]
-              }
-            ],
-            "type": "basic"
-          }
-        ]
-      }
-    ]
-  }
-  
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "equal_sign",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "shift + ä to ^",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "quote"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "equal_sign",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
