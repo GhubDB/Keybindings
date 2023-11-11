@@ -47,46 +47,6 @@
       ]
     },
     {
-      "description": "ü to [",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "open_bracket"
-          },
-          "to": [
-            {
-              "repeat": true,
-              "key_code": "5",
-              "modifiers": [
-                "left_alt"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "shift + ü to ]",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "semicolon"
-          },
-          "to": [
-            {
-              "repeat": true,
-              "key_code": "6",
-              "modifiers": [
-                "left_alt"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "description": "ä to `",
       "manipulators": [
         {
@@ -112,14 +72,61 @@
         {
           "type": "basic",
           "from": {
+            "modifiers": {
+              "mandatory": [
+                "left_shift"
+              ]
+            },
             "key_code": "quote"
           },
           "to": [
             {
               "repeat": true,
-              "key_code": "equal_sign",
+             "key_code": "equal_sign"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ü to [",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "5",
               "modifiers": [
+                "left_alt"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "shift + ü to ]",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": [
                 "left_shift"
+              ]
+            },
+            "key_code": "open_bracket"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "6",
+              "modifiers": [
+                "left_alt"
               ]
             }
           ]
