@@ -2,6 +2,395 @@
   "title": "PROgramming",
   "rules": [
     {
+      "description": "Hyper Key (⌃⌥⇧⌘)",
+      "manipulators": [
+        {
+          "description": "Caps Lock -> Hyper Key",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "left_shift",
+              "modifiers": ["left_command", "left_control", "left_option"]
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Google Chrome.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Google Chrome.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Visual Studio Code.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "v",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Visual Studio Code.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Firefox.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Firefox.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Hyper.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Hyper.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Rider.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Rider.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Microsoft Teams classic.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Microsoft Teams classic.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Microsoft Outlook.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Microsoft Outlook.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Microsoft OneNote.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Microsoft OneNote.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Microsoft Edge.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Microsoft Edge.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Finder.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Finder.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Docker Desktop.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Docker Desktop.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Open -a 'Karabiner-Elements.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Karabiner-Elements.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "j + hyper to \"",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "2",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "k + hyper to (",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "8",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "l + hyper to )",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "9",
+              "modifiers": ["left_shift"]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "description": "ö to {",
       "manipulators": [
         {
