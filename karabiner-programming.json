@@ -6,6 +6,16 @@
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.jetbrains\\.rider$",
+                "^com\\.microsoft\\.visual-studio$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
           "from": {
             "key_code": "semicolon"
           },
@@ -13,9 +23,7 @@
             {
               "repeat": true,
               "key_code": "8",
-              "modifiers": [
-                "left_alt"
-              ]
+              "modifiers": ["left_alt"]
             }
           ]
         }
@@ -26,11 +34,19 @@
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.jetbrains\\.rider$",
+                "^com\\.microsoft\\.visual-studio$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
           "from": {
             "modifiers": {
-              "mandatory": [
-                "left_shift"
-              ]
+              "mandatory": ["left_shift"]
             },
             "key_code": "semicolon"
           },
@@ -38,9 +54,7 @@
             {
               "repeat": true,
               "key_code": "9",
-              "modifiers": [
-                "left_alt"
-              ]
+              "modifiers": ["left_alt"]
             }
           ]
         }
@@ -51,6 +65,16 @@
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.jetbrains\\.rider$",
+                "^com\\.microsoft\\.visual-studio$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
           "from": {
             "key_code": "quote"
           },
@@ -58,9 +82,10 @@
             {
               "repeat": true,
               "key_code": "equal_sign",
-              "modifiers": [
-                "left_shift"
-              ]
+              "modifiers": ["left_shift"]
+            },
+            {
+              "key_code": "spacebar"
             }
           ]
         }
@@ -71,18 +96,26 @@
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.jetbrains\\.rider$",
+                "^com\\.microsoft\\.visual-studio$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
           "from": {
             "modifiers": {
-              "mandatory": [
-                "left_shift"
-              ]
+              "mandatory": ["left_shift"]
             },
             "key_code": "quote"
           },
           "to": [
             {
               "repeat": true,
-             "key_code": "equal_sign"
+              "key_code": "equal_sign"
             }
           ]
         }
@@ -93,6 +126,16 @@
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.jetbrains\\.rider$",
+                "^com\\.microsoft\\.visual-studio$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
           "from": {
             "key_code": "open_bracket"
           },
@@ -100,9 +143,7 @@
             {
               "repeat": true,
               "key_code": "5",
-              "modifiers": [
-                "left_alt"
-              ]
+              "modifiers": ["left_alt"]
             }
           ]
         }
@@ -113,11 +154,19 @@
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode$",
+                "^com\\.jetbrains\\.rider$",
+                "^com\\.microsoft\\.visual-studio$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
           "from": {
             "modifiers": {
-              "mandatory": [
-                "left_shift"
-              ]
+              "mandatory": ["left_shift"]
             },
             "key_code": "open_bracket"
           },
@@ -125,9 +174,7 @@
             {
               "repeat": true,
               "key_code": "6",
-              "modifiers": [
-                "left_alt"
-              ]
+              "modifiers": ["left_alt"]
             }
           ]
         }

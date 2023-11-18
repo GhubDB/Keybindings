@@ -1,0 +1,3 @@
+Keybindings folder
+/Users/taadimo2/.config/karabiner/assets/complex_modifications
+~/.config/karabiner/assets/complex_modifications
