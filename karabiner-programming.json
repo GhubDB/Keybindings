@@ -313,12 +313,36 @@
       ]
     },
     {
+      "description": "Open -a 'Vorschau.app'",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "Open -a 'Vorschau.app'"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "description": "j + hyper to \"",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "j",
+            "key_code": "l",
             "modifiers": {
               "mandatory": [
                 "left_shift",
@@ -344,7 +368,7 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "k",
+            "key_code": "j",
             "modifiers": {
               "mandatory": [
                 "left_shift",
@@ -370,7 +394,7 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "l",
+            "key_code": "k",
             "modifiers": {
               "mandatory": [
                 "left_shift",
@@ -505,6 +529,9 @@
             {
               "repeat": true,
               "key_code": "equal_sign"
+            },
+            {
+              "key_code": "spacebar"
             }
           ]
         }
