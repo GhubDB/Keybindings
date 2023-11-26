@@ -1,0 +1,340 @@
+import { KarabinerRules } from "./types";
+import { createHyperSubLayers, app, open, addCodingApps } from "./utils";
+import fs from "fs";
+
+const rules: KarabinerRules[] = [
+  // Define the Hyper key itself
+  {
+    description: "Hyper Key (⌃⌥⇧⌘)",
+    manipulators: [
+      {
+        description: "Caps Lock -> Hyper Key",
+        from: { key_code: "caps_lock" },
+        to: [
+          {
+            key_code: "left_shift",
+            modifiers: ["left_command", "left_control", "left_option"],
+          },
+        ],
+        to_if_alone: [{ key_code: "escape" }],
+        type: "basic",
+      },
+    ],
+  },
+
+  // Non hpyer coding hotkeys
+  {
+    description: "ö to {",
+    manipulators: [
+      {
+        type: "basic",
+        conditions: [
+          {
+            bundle_identifiers: addCodingApps(),
+            type: "frontmost_application_if",
+          },
+        ],
+        from: { key_code: "semicolon" },
+        to: [
+          {
+            repeat: true,
+            key_code: "8",
+            modifiers: ["left_alt"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "shift ö to }",
+    manipulators: [
+      {
+        type: "basic",
+        conditions: [
+          {
+            bundle_identifiers: addCodingApps(),
+            type: "frontmost_application_if",
+          },
+        ],
+        from: {
+          modifiers: {
+            mandatory: ["left_shift"],
+          },
+          key_code: "semicolon",
+        },
+        to: [
+          {
+            repeat: true,
+            key_code: "9",
+            modifiers: ["left_alt"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "ä to `",
+    manipulators: [
+      {
+        type: "basic",
+        conditions: [
+          {
+            bundle_identifiers: addCodingApps(),
+            type: "frontmost_application_if",
+          },
+        ],
+        from: {
+          key_code: "quote",
+        },
+        to: [
+          {
+            repeat: true,
+            key_code: "equal_sign",
+            modifiers: ["left_shift"],
+          },
+          {
+            key_code: "spacebar",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "shift + ä to ^",
+    manipulators: [
+      {
+        type: "basic",
+        conditions: [
+          {
+            bundle_identifiers: addCodingApps(),
+            type: "frontmost_application_if",
+          },
+        ],
+        from: {
+          modifiers: {
+            mandatory: ["left_shift"],
+          },
+          key_code: "quote",
+        },
+        to: [
+          {
+            repeat: true,
+            key_code: "equal_sign",
+          },
+          {
+            key_code: "spacebar",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "ü to [",
+    manipulators: [
+      {
+        type: "basic",
+        conditions: [
+          {
+            bundle_identifiers: addCodingApps(),
+            type: "frontmost_application_if",
+          },
+        ],
+        from: {
+          key_code: "open_bracket",
+        },
+        to: [
+          {
+            repeat: true,
+            key_code: "5",
+            modifiers: ["left_alt"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "shift + ü to ]",
+    manipulators: [
+      {
+        type: "basic",
+        conditions: [
+          {
+            bundle_identifiers: addCodingApps(),
+            type: "frontmost_application_if",
+          },
+        ],
+        from: {
+          modifiers: {
+            mandatory: ["left_shift"],
+          },
+          key_code: "open_bracket",
+        },
+        to: [
+          {
+            repeat: true,
+            key_code: "6",
+            modifiers: ["left_alt"],
+          },
+        ],
+      },
+    ],
+  },
+
+  ...createHyperSubLayers({
+    g: app("Google Chrome"),
+    v: app("Visual Studio Code"),
+    f: app("Firefox"),
+    y: app("Hyper"),
+    r: app("Rider"),
+    t: app("Microsoft Teams classic"),
+    o: app("Microsoft Outlook"),
+    n: app("Microsoft OneNote"),
+    e: app("Microsoft Edge"),
+    h: app("Finder"),
+    d: open("Docker Desktop"),
+    c: open("Karabiner-Elements"),
+    a: open("Azure Data Studio"),
+
+    // Hyper special characters
+    l: {
+      to: [
+        {
+          key_code: "2",
+          modifiers: ["left_shift"],
+        },
+      ],
+    },
+    j: {
+      to: [
+        {
+          key_code: "8",
+          modifiers: ["left_shift"],
+        },
+      ],
+    },
+    k: {
+      to: [
+        {
+          key_code: "9",
+          modifiers: ["left_shift"],
+        },
+      ],
+    },
+    u: {
+      to: [
+        {
+          key_code: "7",
+          modifiers: ["left_shift"],
+        },
+      ],
+    },
+    i: {
+      to: [
+        {
+          key_code: "7",
+          modifiers: ["left_option"],
+        },
+      ],
+    },
+
+    // s = "System"
+    x: {
+      u: {
+        to: [
+          {
+            key_code: "volume_increment",
+          },
+        ],
+      },
+      j: {
+        to: [
+          {
+            key_code: "volume_decrement",
+          },
+        ],
+      },
+      i: {
+        to: [
+          {
+            key_code: "display_brightness_increment",
+          },
+        ],
+      },
+      k: {
+        to: [
+          {
+            key_code: "display_brightness_decrement",
+          },
+        ],
+      },
+      l: {
+        to: [
+          {
+            key_code: "q",
+            modifiers: ["right_control", "right_command"],
+          },
+        ],
+      },
+      p: {
+        to: [
+          {
+            key_code: "play_or_pause",
+          },
+        ],
+      },
+      semicolon: {
+        to: [
+          {
+            key_code: "fastforward",
+          },
+        ],
+      },
+      e: {
+        to: [
+          {
+            // Emoji picker
+            key_code: "spacebar",
+            modifiers: ["right_control", "right_command"],
+          },
+        ],
+      },
+    },
+
+    // s = Move
+    s: {
+      h: {
+        to: [{ key_code: "left_arrow" }],
+      },
+      j: {
+        to: [{ key_code: "down_arrow" }],
+      },
+      k: {
+        to: [{ key_code: "up_arrow" }],
+      },
+      l: {
+        to: [{ key_code: "right_arrow" }],
+      },
+    },
+  }),
+];
+
+fs.writeFileSync(
+  "karabiner.json",
+  JSON.stringify(
+    {
+      global: {
+        show_in_menu_bar: false,
+      },
+      profiles: [
+        {
+          name: "Default",
+          complex_modifications: {
+            rules,
+          },
+        },
+      ],
+    },
+    null,
+    2
+  )
+);
