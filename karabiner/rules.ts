@@ -179,6 +179,154 @@ const rules: KarabinerRules[] = [
       },
     ],
   },
+  {
+    description: "cmd+c to ctrl+c",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "c",
+        },
+        to: [
+          {
+            key_code: "c",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "cmd+v to ctrl+v",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "v",
+        },
+        to: [
+          {
+            key_code: "v",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "cmd+x to ctrl+x",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "x",
+        },
+        to: [
+          {
+            key_code: "x",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "cmd+a to ctrl+a",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "a",
+        },
+        to: [
+          {
+            key_code: "a",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "cmd+s to ctrl+s",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "s",
+        },
+        to: [
+          {
+            key_code: "s",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "Open files in finder with enter",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          key_code: "return_or_enter",
+        },
+        conditions: [
+          {
+            bundle_identifiers: ["^com\\.apple\\.finder$"],
+            type: "frontmost_application_if",
+          },
+        ],
+        to: [
+          {
+            key_code: "down_arrow",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "Edit title with ctrl+enter in finder",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "return_or_enter",
+        },
+        conditions: [
+          {
+            bundle_identifiers: ["^com\\.apple\\.finder$"],
+            type: "frontmost_application_if",
+          },
+        ],
+        to: [
+          {
+            key_code: "return_or_enter",
+          },
+        ],
+      },
+    ],
+  },
 
   ...createHyperSubLayers({
     g: app("Google Chrome"),
@@ -191,9 +339,10 @@ const rules: KarabinerRules[] = [
     n: app("Microsoft OneNote"),
     e: app("Microsoft Edge"),
     h: app("Finder"),
-    d: open("Docker Desktop"),
-    c: open("Karabiner-Elements"),
-    a: open("Azure Data Studio"),
+    d: app("Docker Desktop"),
+    c: app("Karabiner-Elements"),
+    a: app("Azure Data Studio"),
+    p: app("Preview"),
 
     // Hyper special characters
     l: {
@@ -237,7 +386,7 @@ const rules: KarabinerRules[] = [
       ],
     },
 
-    // s = "System"
+    // x = "System"
     x: {
       u: {
         to: [
@@ -322,9 +471,9 @@ fs.writeFileSync(
   "karabiner.json",
   JSON.stringify(
     {
-      global: {
-        show_in_menu_bar: false,
-      },
+      // global: {
+      //   show_in_menu_bar: false,
+      // },
       profiles: [
         {
           name: "Default",

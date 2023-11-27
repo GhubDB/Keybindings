@@ -47,7 +47,17 @@ yarn add @types/node --dev
 
 you may have to execute this command if types are not added
 
-watches the TypeScript files and rebuilds whenever they change.
+if the sym link does not work you can update the filepath in update-karabiner.sh and run
+
+```
+chmod +x update-karabiner.sh
+```
+
+then run this to update the keybindings
+
+```
+npm run update
+```
 
 ## License
 

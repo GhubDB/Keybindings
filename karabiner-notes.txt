@@ -1,6 +1,0 @@
-Keybindings folder
-/Users/taadimo2/.config/karabiner/assets/complex_modifications
-~/.config/karabiner/assets/complex_modifications
-
-restart karabiner things
-launchctl kickstart -k gui/`id -u`/org.pqrs.karabiner.karabiner_console_user_server
