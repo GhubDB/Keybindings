@@ -16,26 +16,42 @@ set highlightedyank
 set sneak
 set nerdtree
 
-let g:WhichKeyDesc_display = "<leader>d Display options"
-
-let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen mode"
-let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free mode"
-let g:WhichKeyDesc_fullscreen = "<leader>df Toggle full screen"
-
 " Popup navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
 inoremap <C-k> <Action>(PopupMenu-selectPrev)
 
+" Map leader + g + h to show error popup
+nmap <leader>gh <Action>(ShowIntentionActions)
+
+" Harpoon
+nmap <leader>a1 <Action>(setHarpoon1)
+nmap <leader>a2 <Action>(setHarpoon2)
+nmap <leader>a3 <Action>(setHarpoon3)
+nmap <leader>a4 <Action>(setHarpoon4)
+nmap <leader>a5 <Action>(setHarpoon5)
+
+nmap <leader>1 <Action>(GotoHarpoon1)
+nmap <leader>2 <Action>(GotoHarpoon2)
+nmap <leader>3 <Action>(GotoHarpoon3)
+nmap <leader>4 <Action>(GotoHarpoon4)
+nmap <leader>5 <Action>(GotoHarpoon5)
+
+nmap <leader>a <Action>(AddToHarpoon)
+nmap <leader>sh <Action>(ShowHarpoon)
+
 " Open NERDTree (use q to exit)
-map <leader>x :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 " Tab navigation
 nmap <leader>j  <Action>(PreviousTab)
 nmap <leader>k  <Action>(NextTab)
+nmap <leader>l  <Action>(NextSplitter)
+nmap <leader>h  <Action>(PrevSplitter)
 
 " Window splits
 map <leader>v <Action>(SplitVertically)
 map <leader>s <Action>(SplitHorizontally)
+map <leader>m <Action>(MaximizeEditorInSplit)
 map <leader>wu <Action>(Unsplit)
 map <leader>u <Action>(MoveEditorToOppositeTabGroup)
 
@@ -44,8 +60,8 @@ map <leader>dd <action>(ToggleDistractionFreeMode)
 map <leader>z <action>(ToggleZenMode)
 
 " Folding
-map <leader>zc :action CollapseAllRegions<CR>
-map <leader>zo :action ExpandAllRegions<CR>
+map <leader>ca :action CollapseAllRegions<CR>
+map <leader>ua :action ExpandAllRegions<CR>
 
 " Actions
 map <leader>am <action>(ShowIntentionActions)
@@ -83,7 +99,6 @@ nmap <leader>gb <Action>(Forward)
 map <leader>gc <Action>(CheckinProject)
 map <leader>gs <Action>(ActivateVersionControlToolWindow)
 map <leader>gb <Action>(Git.Branches)
-
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.

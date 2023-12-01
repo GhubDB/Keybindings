@@ -260,6 +260,31 @@
             ]
           },
           {
+            "description": "ctrl+shift+c to ctrl+c",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control",
+                      "left_shift"
+                    ]
+                  },
+                  "key_code": "c"
+                },
+                "to": [
+                  {
+                    "key_code": "c",
+                    "modifiers": [
+                      "left_control"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "cmd+v to ctrl+v",
             "manipulators": [
               {
@@ -320,6 +345,17 @@
                   },
                   "key_code": "a"
                 },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.microsoft\\.VSCode$",
+                      "^com\\.jetbrains\\.rider$",
+                      "^com\\.microsoft\\.visual-studio$",
+                      "^com\\.azuredatastudio.oss$"
+                    ]
+                  }
+                ],
                 "to": [
                   {
                     "key_code": "a",
@@ -347,6 +383,54 @@
                 "to": [
                   {
                     "key_code": "s",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "cmd+n to ctrl+n",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ]
+                  },
+                  "key_code": "n"
+                },
+                "to": [
+                  {
+                    "key_code": "n",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "cmd+z to ctrl+z",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ]
+                  },
+                  "key_code": "y"
+                },
+                "to": [
+                  {
+                    "key_code": "y",
                     "modifiers": [
                       "left_command"
                     ]

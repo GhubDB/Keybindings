@@ -1,5 +1,5 @@
 import { KarabinerRules } from "./types";
-import { createHyperSubLayers, app, open, addCodingApps } from "./utils";
+import { createHyperSubLayers, app, open, addCodingApps, createHyperKeys } from "./utils";
 import fs from "fs";
 
 const rules: KarabinerRules[] = [
@@ -200,6 +200,26 @@ const rules: KarabinerRules[] = [
     ],
   },
   {
+    description: "ctrl+shift+c to ctrl+c",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control", "left_shift"],
+          },
+          key_code: "c",
+        },
+        to: [
+          {
+            key_code: "c",
+            modifiers: ["left_control"],
+          },
+        ],
+      },
+    ],
+  },
+  {
     description: "cmd+v to ctrl+v",
     manipulators: [
       {
@@ -250,6 +270,12 @@ const rules: KarabinerRules[] = [
           },
           key_code: "a",
         },
+        conditions: [
+          {
+            type: "frontmost_application_unless",
+            bundle_identifiers: addCodingApps(),
+          },
+        ],
         to: [
           {
             key_code: "a",
@@ -273,6 +299,46 @@ const rules: KarabinerRules[] = [
         to: [
           {
             key_code: "s",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "cmd+n to ctrl+n",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "n",
+        },
+        to: [
+          {
+            key_code: "n",
+            modifiers: ["left_command"],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    description: "cmd+z to ctrl+z",
+    manipulators: [
+      {
+        type: "basic",
+        from: {
+          modifiers: {
+            mandatory: ["left_control"],
+          },
+          key_code: "y",
+        },
+        to: [
+          {
+            key_code: "y",
             modifiers: ["left_command"],
           },
         ],
@@ -328,6 +394,16 @@ const rules: KarabinerRules[] = [
     ],
   },
 
+  ...createHyperKeys({
+    // Hyper special characters
+    l: { to: [{ key_code: "2", modifiers: ["left_shift"] }] },
+    j: { to: [{ key_code: "8", modifiers: ["left_shift"] }] },
+    k: { to: [{ key_code: "9", modifiers: ["left_shift"] }] },
+    u: { to: [{ key_code: "7", modifiers: ["left_shift"] }] },
+    i: { to: [{ key_code: "7", modifiers: ["left_option"] }] },
+
+  }),
+
   ...createHyperSubLayers({
     g: app("Google Chrome"),
     v: app("Visual Studio Code"),
@@ -343,48 +419,6 @@ const rules: KarabinerRules[] = [
     c: app("Karabiner-Elements"),
     a: app("Azure Data Studio"),
     p: app("Preview"),
-
-    // Hyper special characters
-    l: {
-      to: [
-        {
-          key_code: "2",
-          modifiers: ["left_shift"],
-        },
-      ],
-    },
-    j: {
-      to: [
-        {
-          key_code: "8",
-          modifiers: ["left_shift"],
-        },
-      ],
-    },
-    k: {
-      to: [
-        {
-          key_code: "9",
-          modifiers: ["left_shift"],
-        },
-      ],
-    },
-    u: {
-      to: [
-        {
-          key_code: "7",
-          modifiers: ["left_shift"],
-        },
-      ],
-    },
-    i: {
-      to: [
-        {
-          key_code: "7",
-          modifiers: ["left_option"],
-        },
-      ],
-    },
 
     // x = "System"
     x: {

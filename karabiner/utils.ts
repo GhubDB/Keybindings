@@ -141,6 +141,34 @@ export function createHyperSubLayers(subLayers: {
   );
 }
 
+/**
+ * Create individual Hyper Keys
+ */
+export function createHyperKeys(hyperKeys: {
+  [key_code in KeyCode]?: HyperKeySublayer;
+}): KarabinerRules[] {
+  return Object.entries(hyperKeys).map(([key, value]) => ({
+    description: `Hyper Key + ${key}`,
+    manipulators: [
+      {
+        ...value,
+        type: "basic" as const,
+        from: {
+          key_code: key as KeyCode,
+          modifiers: {
+            mandatory: [
+              "left_command",
+              "left_control",
+              "left_shift",
+              "left_option",
+            ],
+          },
+        },
+      },
+    ],
+  }));
+}
+
 function generateSubLayerVariableName(key: KeyCode) {
   return `hyper_sublayer_${key}`;
 }
