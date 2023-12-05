@@ -1,0 +1,129 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+set relativenumber
+set visualbell
+set clipboard+=unnamed
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+let mapleader = " "
+set surround
+set highlightedyank
+set sneak
+set nerdtree
+
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" Map leader + g + h to show error popup
+nmap <leader>gh <Action>(ShowIntentionActions)
+
+" Harpoon
+nmap <leader>a1 <Action>(setHarpoon1)
+nmap <leader>a2 <Action>(setHarpoon2)
+nmap <leader>a3 <Action>(setHarpoon3)
+nmap <leader>a4 <Action>(setHarpoon4)
+nmap <leader>a5 <Action>(setHarpoon5)
+
+nmap <leader>1 <Action>(GotoHarpoon1)
+nmap <leader>2 <Action>(GotoHarpoon2)
+nmap <leader>3 <Action>(GotoHarpoon3)
+nmap <leader>4 <Action>(GotoHarpoon4)
+nmap <leader>5 <Action>(GotoHarpoon5)
+
+nmap <leader>a <Action>(AddToHarpoon)
+nmap <leader>sh <Action>(ShowHarpoon)
+
+" Open NERDTree (use q to exit)
+map <leader>n :NERDTreeToggle<CR>
+
+" Tab navigation
+nmap <leader>j  <Action>(PreviousTab)
+nmap <leader>k  <Action>(NextTab)
+nmap <leader>l  <Action>(NextSplitter)
+nmap <leader>h  <Action>(PrevSplitter)
+
+" Window splits
+map <leader>v <Action>(SplitVertically)
+map <leader>s <Action>(SplitHorizontally)
+map <leader>m <Action>(MaximizeEditorInSplit)
+map <leader>wu <Action>(Unsplit)
+map <leader>u <Action>(MoveEditorToOppositeTabGroup)
+
+" Display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>z <action>(ToggleZenMode)
+
+" Folding
+map <leader>ca :action CollapseAllRegions<CR>
+map <leader>ua :action ExpandAllRegions<CR>
+
+" Actions
+map <leader>am <action>(ShowIntentionActions)
+map <leader>as <action>(SearchEverywhere)
+
+" File navigation
+map <leader>ff <action>(GotoFile)
+map <leader>fr <action>(RecentFiles)
+map <leader>fc <action>(FindInPath)
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fl <action>(RecentLocations)
+map <leader>fs <action>(NewScratchFile)
+
+" Close active tab
+map <leader>x <action>(CloseContent)
+
+" Refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Go to code
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gy <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gu <Action>(ShowUsages)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gf <Action>(Back)
+nmap <leader>gb <Action>(Forward)
+
+" Git windows
+map <leader>gc <Action>(CheckinProject)
+map <leader>gs <Action>(ActivateVersionControlToolWindow)
+map <leader>gb <Action>(Git.Branches)
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)

@@ -4,3 +4,6 @@ Keybindings folder
 
 restart karabiner things
 launchctl kickstart -k gui/`id -u`/org.pqrs.karabiner.karabiner_console_user_server
+
+making a symlink
+ln -s ~/github/mxstbr/karabiner ~/.config
