@@ -8,6 +8,11 @@ export interface LayerCommand {
   description?: string;
 }
 
+export interface Command {
+  to: To[];
+  description?: string;
+}
+
 type HyperKeySublayer = {
   // The ? is necessary, otherwise we'd have to define something for _every_ key code
   [key_code in KeyCode]?: LayerCommand;
@@ -145,7 +150,7 @@ export function createHyperSubLayers(subLayers: {
  * Create individual Hyper Keys
  */
 export function createHyperKeys(hyperKeys: {
-  [key_code in KeyCode]?: HyperKeySublayer;
+  [key_code in KeyCode]?: LayerCommand;
 }): KarabinerRules[] {
   return Object.entries(hyperKeys).map(([key, value]) => ({
     description: `Hyper Key + ${key}`,
@@ -191,13 +196,19 @@ export function open(what: string): LayerCommand {
  * Shortcut for "Open an app" command (of which there are a bunch)
  */
 export function app(name: string): LayerCommand {
+  if (isFilepath(name)) { return open(`-a ${name}`) };
   return open(`-a '${name}.app'`);
+}
+
+function isFilepath(input: string) {
+  return input.includes("/");
 }
 
 export function addCodingApps(): CodingApp[] {
   return [
     "^com\\.microsoft\\.VSCode$",
     "^com\\.jetbrains\\.rider$",
+    "^com\\.jetbrains\\.intellij$",
     "^com\\.microsoft\\.visual-studio$",
     "^com\\.azuredatastudio.oss$",
   ];

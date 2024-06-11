@@ -401,16 +401,16 @@ const rules: KarabinerRules[] = [
     k: { to: [{ key_code: "9", modifiers: ["left_shift"] }] },
     u: { to: [{ key_code: "7", modifiers: ["left_shift"] }] },
     i: { to: [{ key_code: "7", modifiers: ["left_option"] }] },
+    p: { to: [{ key_code: "7", modifiers: ["left_option", "left_shift"] }] },
 
-  }),
-
-  ...createHyperSubLayers({
+    // Apps
     g: app("Google Chrome"),
+    q: app("Preview"),
     v: app("Visual Studio Code"),
     f: app("Firefox"),
     y: app("Hyper"),
     r: app("Rider"),
-    t: app("Microsoft Teams classic"),
+    t: app("Microsoft Teams"),
     o: app("Microsoft Outlook"),
     n: app("Microsoft OneNote"),
     e: app("Microsoft Edge"),
@@ -418,8 +418,10 @@ const rules: KarabinerRules[] = [
     d: app("Docker Desktop"),
     c: app("Karabiner-Elements"),
     a: app("Azure Data Studio"),
-    p: app("Preview"),
+    w: app("/Users/taadimo2/projects/gibb/122-gruppenarbeit/dist/workulator"),
+  }),
 
+  ...createHyperSubLayers({
     // x = "System"
     x: {
       u: {

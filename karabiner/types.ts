@@ -126,6 +126,7 @@ export interface MouseKey {
 export type CodingApp =
   | "^com\\.microsoft\\.VSCode$"
   | "^com\\.jetbrains\\.rider$"
+  | "^com\\.jetbrains\\.intellij$"
   | "^com\\.microsoft\\.visual-studio$"
   | "^com\\.azuredatastudio.oss$";
 
