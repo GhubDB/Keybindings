@@ -5,6 +5,36 @@ SetTitleMatchMode, 2
 GroupAdd, CodeEditors, Microsoft Visual Studio
 #IfWinActive, ahk_group CodeEditors
 
+; CapsLock::
+;     ; Send, ^+! ; Send Ctrl+Shift+Alt
+;     Send {CtrlDown}{ShiftDown}{AltDown}
+;     KeyWait, CapsLock ; Wait for CapsLock to be released
+;     ; Send, {Esc} ; Send Escape key
+;     Send {Blind}{CtrlUp}{ShiftUp}{AltUp}{Esc}
+;     return
+
+SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
+*CapsLock::
+    Send {CtrlDown}{ShiftDown}{AltDown}
+    cDown := A_TickCount
+Return
+
+*CapsLock up::
+    If ((A_TickCount-cDown)<400)  ; Modify press time as needed (milliseconds)
+        Send {Blind}{CtrlUp}{ShiftUp}{AltUp}{Esc}
+    Else
+        Send {Blind}{CtrlUp}{ShiftUp}{AltUp}
+Return
+
+^+!j:: Send, (
+Return
+
+^+!k:: Send, )
+Return
+
+^+!l:: Send, "
+Return
+
 ^!r::
     ToolTip, PROgramming keys reloading
     Sleep 1000 
@@ -30,3 +60,10 @@ GroupAdd, CodeEditors, Microsoft Visual Studio
 
 ; Remap Shift+ä to ^
 +ä::Send, {^}{Space}
+
+; Define a hotkey to open or switch to Visual Studio Code
+^+!v::
+Run, "C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe";
+
+
+; SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
