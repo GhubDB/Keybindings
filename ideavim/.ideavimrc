@@ -40,6 +40,7 @@ nmap <leader>a <Action>(AddToHarpoon)
 nmap <leader>sh <Action>(ShowHarpoon)
 
 " Open NERDTree (use q to exit)
+" https://github.com/JetBrains/ideavim/wiki/NERDTree-support
 map <leader>n :NERDTreeToggle<CR>
 
 " Tab navigation
@@ -108,7 +109,7 @@ set scrolloff=5
 set incsearch
 
 " Don't use Ex mode, use Q for formatting.
-map Q gq
+map Q gqsdf
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
@@ -118,12 +119,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 
 
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
 "" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
+map <leader>d <Action>(Debug)
+map <leader>b <Action>(ToggleLineBreakpoint)
 
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
