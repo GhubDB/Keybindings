@@ -96,6 +96,14 @@ return
 ManageApp("chrome.exe", "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
 return
 
+~CapsLock & m::
+ManageApp("foobar2000.exe", "C:\Program Files (x86)\foobar2000\foobar2000.exe")
+return
+
+~CapsLock & r::
+ManageApp("rider64.exe", "C:\Program Files\JetBrains\JetBrains Rider 2023.2.3\bin\rider64.exe")
+return
+
 ^!r::
     ToolTip, PROgramming keys reloading
     Sleep 1000 
@@ -107,21 +115,19 @@ return
 
 ManageApp(app_exe, app_path) {
 
-    WinGet, win_id, list, ahk_exe %app_exe%
+    ; Set ErrorLevel to 0 if the application is not open
+    Process, Exist, %app_exe%
 
     ; If the app is not running, start it
-    If (win_id = "") 
+    If (ErrorLevel = 0)
     {
         Run, %app_path%
         return
     }
 
-
     WinGet, ActiveProcess, ProcessName, A
     WinGet, OpenWindowsAmount, Count, ahk_exe %ActiveProcess%
-    WinGetActiveTitle, active_app
     WinGet, activePath, ProcessPath, % "ahk_id" winActive("A")	
-    ToolTip, active_app: %active_app% // app_exe: %app_exe% // OpenWindowsAmount: %OpenWindowsAmount% // activePath: %activePath%
  
     ; If the app we are looking for is already active,
     ; and there is more than one window open, switch to the next window
