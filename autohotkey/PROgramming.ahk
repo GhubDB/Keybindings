@@ -79,10 +79,22 @@ Return
 
 #IfWinActive
 
-; Define a hotkey to open or switch to Visual Studio Code
-~Capslock & v::
-Run, "C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe";
-Return
+; ; Define a hotkey to open or switch to Visual Studio Code
+; ~Capslock & v::
+; Run, "C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe";
+; Return
+
+~CapsLock & v::
+ManageApp("Code.exe", "C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe")
+return
+
+~CapsLock & f::
+ManageApp("firefox.exe", "C:\Program Files\Mozilla Firefox\firefox.exe")
+return
+
+~CapsLock & g::
+ManageApp("chrome.exe", "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
+return
 
 ^!r::
     ToolTip, PROgramming keys reloading
@@ -92,3 +104,40 @@ Return
 
 ; Suspend and unsuspend hotkeys
 !<:: Suspend 
+
+ManageApp(app_exe, app_path) {
+
+    WinGet, win_id, list, ahk_exe %app_exe%
+
+    ; If the app is not running, start it
+    If (win_id = "") 
+    {
+        Run, %app_path%
+        return
+    }
+
+
+    WinGet, ActiveProcess, ProcessName, A
+    WinGet, OpenWindowsAmount, Count, ahk_exe %ActiveProcess%
+    WinGetActiveTitle, active_app
+    WinGet, activePath, ProcessPath, % "ahk_id" winActive("A")	
+    ToolTip, active_app: %active_app% // app_exe: %app_exe% // OpenWindowsAmount: %OpenWindowsAmount% // activePath: %activePath%
+ 
+    ; If the app we are looking for is already active,
+    ; and there is more than one window open, switch to the next window
+    If (activePath = app_path && OpenWindowsAmount > 1)
+    {
+        SwitchToNextWindow()
+        Return
+    }
+
+    ; Else, switch the window of the app we want to active
+    WinActivate ahk_exe %app_exe%
+}
+
+SwitchToNextWindow() {
+    WinGetClass, ActiveClass, A
+    WinSet, Bottom,, A
+    WinActivate, ahk_class %ActiveClass%
+    Return
+}
