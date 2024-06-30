@@ -13,6 +13,26 @@ GroupAdd, CodeEditors, Microsoft Visual Studio
 
 SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 
+; Remap ö to {
+ö::Send, {{} 
+
+; Remap Shift+ö to AltGr+ä
++ö::Send, {}}  
+
+; Remap ü to AltGr+ü
+ü::Send, [
+
+; Remap Shift+ü to AltGr+!
++ü::Send, ]
+
+; Remap ä to Shift+^
+ä::Send, {``}{Space}
+
+; Remap Shift+ä to ^
++ä::Send, {^}{Space}
+
+#IfWinActive
+
 ;; note: must use tidle prefix to fire hotkey once it is pressed
 ;; not until the hotkey is released
 ~Capslock::
@@ -37,15 +57,8 @@ return
 ; ~Capslock & k:: Send {Up}
 ; ~Capslock & j:: Send {Down}
 
-; ;; popular hotkeys with hyper
-; ~Capslock & c:: Send ^{c}
-; ~Capslock & v:: Send ^{v}
-
-;; vim navigation with hyper
-#^h:: Send {Left}
-#^l:: Send {Right}
-#^k:: Send {Up}
-#^j:: Send {Down}
+~Capslock & a:: Send ^{c}
+~Capslock & s:: Send ^{v}
 
 ~Capslock & j:: Send, (
 Return
@@ -59,49 +72,44 @@ Return
 ~Capslock & i:: Send, {|}
 Return
 
-; Remap ö to {
-ö::Send, {{} 
-
-; Remap Shift+ö to AltGr+ä
-+ö::Send, {}}  
-
-; Remap ü to AltGr+ü
-ü::Send, [
-
-; Remap Shift+ü to AltGr+!
-+ü::Send, ]
-
-; Remap ä to Shift+^
-ä::Send, {``}{Space}
-
-; Remap Shift+ä to ^
-+ä::Send, {^}{Space}
-
-#IfWinActive
-
-; ; Define a hotkey to open or switch to Visual Studio Code
-; ~Capslock & v::
-; Run, "C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe";
-; Return
+; App shortcuts
+; You can find the filepath for windows store apps by entering 
+; shell:AppsFolder into the explorer address bar
 
 ~CapsLock & v::
-ManageApp("Code.exe", "C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe")
+ManageApp("C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe")
 return
 
 ~CapsLock & f::
-ManageApp("firefox.exe", "C:\Program Files\Mozilla Firefox\firefox.exe")
+ManageApp("C:\Program Files\Mozilla Firefox\firefox.exe")
 return
 
 ~CapsLock & g::
-ManageApp("chrome.exe", "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
+ManageApp("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
 return
 
 ~CapsLock & m::
-ManageApp("foobar2000.exe", "C:\Program Files (x86)\foobar2000\foobar2000.exe")
+ManageApp("C:\Program Files (x86)\foobar2000\foobar2000.exe")
+return
+
+~CapsLock & n::
+ManageApp("C:\Program Files\Neovim\bin\nvim.exe")
 return
 
 ~CapsLock & r::
-ManageApp("rider64.exe", "C:\Program Files\JetBrains\JetBrains Rider 2023.2.3\bin\rider64.exe")
+ManageApp("C:\Program Files\JetBrains\JetBrains Rider 2023.2.3\bin\rider64.exe")
+return
+
+~CapsLock & b::
+ManageApp("C:\WinStoreApps\Audiobooked")
+return
+
+~CapsLock & p::
+ManageApp("C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe")
+return
+
+~CapsLock & w::
+ManageApp("C:\Windows\System32\wsl.exe")
 return
 
 ^!r::
@@ -113,7 +121,10 @@ return
 ; Suspend and unsuspend hotkeys
 !<:: Suspend 
 
-ManageApp(app_exe, app_path) {
+ManageApp(app_path) {
+
+    path_chunks := StrSplit(app_path, "\")
+    app_exe := path_chunks[path_chunks.Length()]
 
     ; Set ErrorLevel to 0 if the application is not open
     Process, Exist, %app_exe%
