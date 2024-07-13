@@ -51,12 +51,6 @@ SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
     }
 return
 
-; ;; vim navigation with hyper
-; ~Capslock & h:: Send {Left}
-; ~Capslock & l:: Send {Right}
-; ~Capslock & k:: Send {Up}
-; ~Capslock & j:: Send {Down}
-
 ~Capslock & a:: Send ^{c}
 ~Capslock & s:: Send ^{v}
 
@@ -71,6 +65,21 @@ Return
 
 ~Capslock & i:: Send, {|}
 Return
+
+~Capslock & left:: Send, {LWin down}{Shift down}{Left down}{Left up}{Shift up}{LWin up}
+Return
+
+~Capslock & right:: Send, {LWin down}{Shift down}{Right down}{Right up}{Shift up}{LWin up}
+Return
+
+~Capslock & up:: Send, {LWin down}{Up down}{Up up}{LWin up}
+Return
+
+; ;; vim navigation with hyper
+; ~§ & h:: Send {Left}
+; ~§ & l:: Send {Right}
+; ~§ & k:: Send {Up}
+; ~§ & j:: Send {Down}
 
 ; App shortcuts
 ; You can find the filepath for windows store apps by entering 
@@ -112,6 +121,16 @@ return
 ManageApp("C:\Windows\System32\wsl.exe")
 return
 
+; Tab through windows forwards and backwards
+~CapsLock & .::
+SwitchWindowsDirectionally(1)
+return
+
+~CapsLock & ,::
+SwitchWindowsDirectionally(-1)
+return
+
+; Reload hotkey file (Useful after a change)
 ^!r::
     ToolTip, PROgramming keys reloading
     Sleep 1000 
@@ -122,7 +141,6 @@ return
 !<:: Suspend 
 
 ManageApp(app_path) {
-
     path_chunks := StrSplit(app_path, "\")
     app_exe := path_chunks[path_chunks.Length()]
 
@@ -144,12 +162,45 @@ ManageApp(app_path) {
     ; and there is more than one window open, switch to the next window
     If (activePath = app_path && OpenWindowsAmount > 1)
     {
-        SwitchToNextWindow()
+        ; SwitchToNextWindow()
+        SwitchWindowsDirectionally(1)
         Return
     }
 
     ; Else, switch the window of the app we want to active
     WinActivate ahk_exe %app_exe%
+}
+
+SwitchWindowsDirectionally(Direction)
+{
+    static total, hWnds, last := ""
+
+    a := WinExist("A")
+    WinGetClass wClass
+    WinGet exe, ProcessName
+
+    if (exe != last) {
+        last := exe
+        hWnds := []
+        DetectHiddenWindows Off
+        WinGet wList, List, % "ahk_exe" exe " ahk_class" wClass
+        loop % wList {
+            hWnd := wList%A_Index%
+            hWnds.Push(hWnd)
+        }
+        total := hWnds.Count()
+    }
+
+    for i,hWnd in hWnds {
+        if (a = hWnd)
+            break
+    }
+
+    i += Direction
+    ; i := Max(1, Min(total, i))
+    i := i > total ? 1 : i = 0 ? total : i
+
+    WinActivate % "ahk_id" hWnds[i]
 }
 
 SwitchToNextWindow() {
@@ -158,3 +209,32 @@ SwitchToNextWindow() {
     WinActivate, ahk_class %ActiveClass%
     Return
 }
+
+::ga::git add .
+
+::gc::
+Send, git commit -m ""
+Send, {Left}
+Return
+
+::gp::git push
+
+::gs::git status
+
+::gb::git branch
+
+::gl::git log
+
+::gcb::git checkout -b
+
+::gca::git commit --amend
+
+::gco::git checkout 
+
+::ns::npm run start
+
+::nb::npm run build
+
+::nt::npm run test
+
+::ni::npm install
