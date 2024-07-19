@@ -33,6 +33,10 @@ SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 
 #IfWinActive
 
+; Disable the windows shortcut before using this hyper key
+; Click Search on the taskbar, enter CMD, select Run as administrator to open, enter the following command and press Enter:
+; REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
+; After this command is completed, the Office app shortcut will be disabled and the Hyper key will not open it again.
 ;; note: must use tidle prefix to fire hotkey once it is pressed
 ;; not until the hotkey is released
 ~Capslock::
@@ -73,6 +77,9 @@ Return
 Return
 
 ~Capslock & up:: Send, {LWin down}{Up down}{Up up}{LWin up}
+Return
+
+~Capslock & down:: Send, {LWin down}{Down down}{Down up}{LWin up}
 Return
 
 ; ;; vim navigation with hyper
