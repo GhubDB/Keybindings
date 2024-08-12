@@ -9,6 +9,11 @@ GroupAdd, CodeEditors, ahk_class Chrome_WidgetWin_1
 GroupAdd, CodeEditors, ahk_class SunAwtFrame
 SetTitleMatchMode, 2
 GroupAdd, CodeEditors, Microsoft Visual Studio
+
+global pathKeys := {}
+
+ReadFilepaths()
+
 #IfWinActive, ahk_group CodeEditors
 
 SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
@@ -33,8 +38,29 @@ SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 
 #IfWinActive
 
+; App shortcuts
+; You can find the filepath for windows store apps by entering 
+; shell:AppsFolder into the explorer address bar
+; Read filepaths from ini file and generate hotkeys
+ReadFilepaths() {
+    FileRead, fileData, work.ini
+
+    Loop, Parse, fileData, `n, `r
+    {
+        StringSplit, lineData, A_LoopField, `,
+        if (lineData0 == 2) {
+            Hotkey, ~CapsLock & %lineData1%, CallManageApp
+            pathKeys[lineData1] := lineData2
+        }
+    }
+}
+
+CallManageApp:
+ManageApp()
+return
+
 ; Disable the windows shortcut before using this hyper key
-; Click Search on the taskbar, enter CMD, select Run as administrator to open, enter the following command and press Enter:
+; Run this command in an elevated CMD terminal:
 ; REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
 ; After this command is completed, the Office app shortcut will be disabled and the Hyper key will not open it again.
 ;; note: must use tidle prefix to fire hotkey once it is pressed
@@ -56,7 +82,10 @@ SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 return
 
 ~Capslock & a:: Send ^{c}
+return
+
 ~Capslock & s:: Send ^{v}
+return
 
 ~Capslock & j:: Send, (
 Return
@@ -88,46 +117,6 @@ Return
 ; ~§ & k:: Send {Up}
 ; ~§ & j:: Send {Down}
 
-; App shortcuts
-; You can find the filepath for windows store apps by entering 
-; shell:AppsFolder into the explorer address bar
-
-~CapsLock & v::
-ManageApp("C:\Users\Me\AppData\Local\Programs\Microsoft VS Code\Code.exe")
-return
-
-~CapsLock & f::
-ManageApp("C:\Program Files\Mozilla Firefox\firefox.exe")
-return
-
-~CapsLock & g::
-ManageApp("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
-return
-
-~CapsLock & m::
-ManageApp("C:\Program Files (x86)\foobar2000\foobar2000.exe")
-return
-
-~CapsLock & n::
-ManageApp("C:\Program Files\Neovim\bin\nvim.exe")
-return
-
-~CapsLock & r::
-ManageApp("C:\Program Files\JetBrains\JetBrains Rider 2023.2.3\bin\rider64.exe")
-return
-
-~CapsLock & b::
-ManageApp("C:\WinStoreApps\Audiobooked")
-return
-
-~CapsLock & p::
-ManageApp("C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe")
-return
-
-~CapsLock & w::
-ManageApp("C:\Windows\System32\wsl.exe")
-return
-
 ; Tab through windows forwards and backwards
 ~CapsLock & .::
 SwitchWindowsDirectionally(1)
@@ -147,7 +136,10 @@ return
 ; Suspend and unsuspend hotkeys
 !<:: Suspend 
 
-ManageApp(app_path) {
+ManageApp() {
+    ; Get the last key from the pressed hotkey
+    keyName := Trim(SubStr(A_ThisHotkey, -1))
+    app_path := pathKeys[keyName]
     path_chunks := StrSplit(app_path, "\")
     app_exe := path_chunks[path_chunks.Length()]
 
@@ -186,7 +178,7 @@ SwitchWindowsDirectionally(Direction)
     WinGetClass wClass
     WinGet exe, ProcessName
 
-    if (exe != last) {
+    ; if (exe != last) {
         last := exe
         hWnds := []
         DetectHiddenWindows Off
@@ -196,7 +188,7 @@ SwitchWindowsDirectionally(Direction)
             hWnds.Push(hWnd)
         }
         total := hWnds.Count()
-    }
+    ; }
 
     for i,hWnd in hWnds {
         if (a = hWnd)
@@ -217,6 +209,8 @@ SwitchToNextWindow() {
     Return
 }
 
+::gp::git pull
+
 ::ga::git add .
 
 ::gc::
@@ -224,7 +218,7 @@ Send, git commit -m ""
 Send, {Left}
 Return
 
-::gp::git push
+::gpu::git push
 
 ::gs::git status
 
