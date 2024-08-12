@@ -10,6 +10,8 @@ GroupAdd, CodeEditors, ahk_class SunAwtFrame
 SetTitleMatchMode, 2
 GroupAdd, CodeEditors, Microsoft Visual Studio
 
+global compName := ComObjCreate("WScript.Network").ComputerName
+; MsgBox % "Your computer's name is : " . compName
 global pathKeys := {}
 
 ReadFilepaths()
@@ -43,7 +45,7 @@ SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 ; shell:AppsFolder into the explorer address bar
 ; Read filepaths from ini file and generate hotkeys
 ReadFilepaths() {
-    FileRead, fileData, work.ini
+    FileRead, fileData, %compName%.ini
 
     Loop, Parse, fileData, `n, `r
     {
