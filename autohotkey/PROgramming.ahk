@@ -3,6 +3,7 @@
 #InstallKeybdHook
 #SingleInstance force
 SendMode Input
+SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 
 GroupAdd, CodeEditors, ahk_class Qt5152QWindowIcon
 GroupAdd, CodeEditors, ahk_class Chrome_WidgetWin_1
@@ -18,7 +19,9 @@ ReadFilepaths()
 
 #IfWinActive, ahk_group CodeEditors
 
-SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
+; ###########################################################################
+; Key Remappings
+; ###########################################################################
 
 ; Remap ö to {
 ö::Send, {{} 
@@ -40,9 +43,14 @@ SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 
 #IfWinActive
 
+; ###########################################################################
 ; App shortcuts
 ; You can find the filepath for windows store apps by entering 
 ; shell:AppsFolder into the explorer address bar
+; How to find the teams executable: 
+; %localappdata%\Microsoft\Teams\Current\Teams.exe
+; ###########################################################################
+
 ; Read filepaths from ini file and generate hotkeys
 ReadFilepaths() {
     FileRead, fileData, %compName%.ini
@@ -113,12 +121,6 @@ Return
 ~Capslock & down:: Send, {LWin down}{Down down}{Down up}{LWin up}
 Return
 
-; ;; vim navigation with hyper
-; ~§ & h:: Send {Left}
-; ~§ & l:: Send {Right}
-; ~§ & k:: Send {Up}
-; ~§ & j:: Send {Down}
-
 ; Tab through windows forwards and backwards
 ~CapsLock & .::
 SwitchWindowsDirectionally(1)
@@ -128,15 +130,11 @@ return
 SwitchWindowsDirectionally(-1)
 return
 
-; Reload hotkey file (Useful after a change)
-^!r::
-    ToolTip, PROgramming keys reloading
-    Sleep 1000 
-    Reload 
-    Tooltip
-
-; Suspend and unsuspend hotkeys
-!<:: Suspend 
+; ;; vim navigation with hyper
+; ~ & ö:: Send {Left}
+; ~ & l:: Send {Right}
+~CapsLock & ä:: Send {Up}
+~CapsLock & ö:: Send {Down}
 
 ManageApp() {
     ; Get the last key from the pressed hotkey
@@ -211,6 +209,10 @@ SwitchToNextWindow() {
     Return
 }
 
+; ###########################################################################
+; Text expansions 
+; ###########################################################################
+
 ::gp::git pull
 
 ::ga::git add .
@@ -241,3 +243,17 @@ Return
 ::nt::npm run test
 
 ::ni::npm install
+
+; ###########################################################################
+; General Hotkeys
+; ###########################################################################
+
+; Reload hotkey file (Useful after a change)
+^!r::
+    ToolTip, PROgramming keys reloading
+    Sleep 1000 
+    Reload 
+    Tooltip
+
+; Suspend and unsuspend hotkeys
+!<:: Suspend 
