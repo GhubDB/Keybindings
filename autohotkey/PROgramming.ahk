@@ -45,6 +45,7 @@ ReadFilepaths()
 
 ; ###########################################################################
 ; App shortcuts
+
 ; You can find the filepath for windows store apps by entering 
 ; shell:AppsFolder into the explorer address bar
 ; How to find the teams executable: 
@@ -107,6 +108,9 @@ Return
 Return
 
 ~Capslock & i:: Send, {|}
+Return
+
+~Capslock & u:: Send, @
 Return
 
 ~Capslock & left:: Send, {LWin down}{Shift down}{Left down}{Left up}{Shift up}{LWin up}
@@ -235,14 +239,6 @@ Return
 ::gca::git commit --amend
 
 ::gco::git checkout 
-
-::ns::npm run start
-
-::nb::npm run build
-
-::nt::npm run test
-
-::ni::npm install
 
 ; ###########################################################################
 ; General Hotkeys
