@@ -92,12 +92,6 @@ return
     }
 return
 
-~Capslock & a:: Send ^{c}
-return
-
-~Capslock & s:: Send ^{v}
-return
-
 ~Capslock & j:: Send, (
 Return
 
@@ -111,6 +105,9 @@ Return
 Return
 
 ~Capslock & u:: Send, @
+Return
+
+~Capslock & m:: Send, $
 Return
 
 ~Capslock & left:: Send, {LWin down}{Shift down}{Left down}{Left up}{Shift up}{LWin up}
