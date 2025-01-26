@@ -45,6 +45,7 @@ ReadFilepaths()
 
 ; ###########################################################################
 ; App shortcuts
+
 ; You can find the filepath for windows store apps by entering 
 ; shell:AppsFolder into the explorer address bar
 ; How to find the teams executable: 
@@ -91,12 +92,6 @@ return
     }
 return
 
-~Capslock & a:: Send ^{c}
-return
-
-~Capslock & s:: Send ^{v}
-return
-
 ~Capslock & j:: Send, (
 Return
 
@@ -107,6 +102,12 @@ Return
 Return
 
 ~Capslock & i:: Send, {|}
+Return
+
+~Capslock & u:: Send, @
+Return
+
+~Capslock & m:: Send, $
 Return
 
 ~Capslock & left:: Send, {LWin down}{Shift down}{Left down}{Left up}{Shift up}{LWin up}

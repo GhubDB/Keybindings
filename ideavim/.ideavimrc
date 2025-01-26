@@ -58,7 +58,7 @@ map <leader>u <Action>(MoveEditorToOppositeTabGroup)
 
 " Display options
 map <leader>dd <action>(ToggleDistractionFreeMode)
-map <leader>z <action>(ToggleZenMode)
+ map <leader>z <action>(ToggleZenMode)
 
 " Folding
 map <leader>ca :action CollapseAllRegions<CR>
@@ -67,10 +67,10 @@ map <leader>ua :action ExpandAllRegions<CR>
 " Actions
 map <leader>am <action>(ShowIntentionActions)
 map <leader>as <action>(SearchEverywhere)
+map <leader>q <action>(OptimizeImports)
 
 " File navigation
 map <leader>ff <action>(GotoFile)
-map <leader>fr <action>(RecentFiles)
 map <leader>fc <action>(FindInPath)
 map <leader><leader> <Action>(RecentFiles)
 map <leader>fl <action>(RecentLocations)
@@ -97,9 +97,11 @@ nmap <leader>gf <Action>(Back)
 nmap <leader>gb <Action>(Forward)
 
 " Git windows
-map <leader>gc <Action>(CheckinProject)
 map <leader>gs <Action>(ActivateVersionControlToolWindow)
 map <leader>gb <Action>(Git.Branches)
+map <leader>gv <Action>(Compare.SameVersion)
+map <leader>gz <Action>(Vcs.ShowHistoryForBlock)
+
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
@@ -122,4 +124,3 @@ Plug 'tpope/vim-commentary'
 "" Map <leader>d to start debug
 map <leader>d <Action>(Debug)
 map <leader>b <Action>(ToggleLineBreakpoint)
-
