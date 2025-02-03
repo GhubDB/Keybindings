@@ -213,6 +213,11 @@ SwitchWindowsDirectionally(Direction)
     Send, {Left}
 Return
 
+::gac::
+    Send, git -am commit -m ""
+    Send, {Left}
+Return
+
 !l::
     Send, console.log("")
     Send, {Left}
