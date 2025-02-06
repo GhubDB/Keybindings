@@ -1,47 +1,15 @@
-﻿#NoEnv ; recommended for performance and compatibility with future autohotkey releases.
+#NoEnv ; recommended for performance and compatibility with future autohotkey releases.
 #UseHook
 #InstallKeybdHook
 #SingleInstance force
 SendMode Input
 SetCapsLockState, AlwaysOff ; Ensure CapsLock is always off initially
 
-GroupAdd, CodeEditors, ahk_class Qt5152QWindowIcon
-GroupAdd, CodeEditors, ahk_class Chrome_WidgetWin_1
-GroupAdd, CodeEditors, ahk_class SunAwtFrame
-SetTitleMatchMode, 2
-GroupAdd, CodeEditors, Microsoft Visual Studio
-
 global compName := ComObjCreate("WScript.Network").ComputerName
 ; MsgBox % "Your computer's name is : " . compName
 global pathKeys := {}
 
 ReadFilepaths()
-
-#IfWinActive, ahk_group CodeEditors
-
-    ; ###########################################################################
-    ; Key Remappings
-    ; ###########################################################################
-
-    ; Remap ö to {
-    ö::Send, {{}
-
-    ; Remap Shift+ö to AltGr+ä
-    +ö::Send, {}}
-
-    ; Remap ü to AltGr+ü
-    ü::Send, [
-
-    ; Remap Shift+ü to AltGr+!
-    +ü::Send, ]
-
-    ; Remap ä to Shift+^
-    ä::Send, {``}{Space}
-
-    ; Remap Shift+ä to ^
-    +ä::Send, {^}{Space}
-
-#IfWinActive
 
 ; ###########################################################################
 ; App shortcuts
@@ -92,49 +60,6 @@ return
     }
 return
 
-~Capslock & j:: Send, (
-Return
-
-~Capslock & k:: Send, )
-Return
-
-~Capslock & l:: Send, "
-Return
-
-~Capslock & i:: Send, {|}
-Return
-
-~Capslock & u:: Send, @
-Return
-
-~Capslock & m:: Send, $
-Return
-
-~Capslock & left:: Send, {LWin down}{Shift down}{Left down}{Left up}{Shift up}{LWin up}
-Return
-
-~Capslock & right:: Send, {LWin down}{Shift down}{Right down}{Right up}{Shift up}{LWin up}
-Return
-
-~Capslock & up:: Send, {LWin down}{Up down}{Up up}{LWin up}
-Return
-
-~Capslock & down:: Send, {LWin down}{Down down}{Down up}{LWin up}
-Return
-
-; Tab through windows forwards and backwards
-~CapsLock & .::
-    SwitchWindowsDirectionally(1)
-return
-
-~CapsLock & ,::
-    SwitchWindowsDirectionally(-1)
-return
-
-; ;; vim navigation with hyper
-~CapsLock & ä:: Send {Up}
-~CapsLock & ö:: Send {Down}
-
 ManageApp() {
     ; Get the last key from the pressed hotkey
     keyName := Trim(SubStr(A_ThisHotkey, -1))
@@ -160,7 +85,6 @@ ManageApp() {
     ; and there is more than one window open, switch to the next window
     If (activePath = app_path && OpenWindowsAmount > 1)
     {
-        ; SwitchToNextWindow()
         SwitchWindowsDirectionally(1)
         Return
     }
@@ -198,43 +122,21 @@ SwitchWindowsDirectionally(Direction)
     WinActivate % "ahk_id" hWnds[i]
 }
 
-; ###########################################################################
-; Text expansions
-; ###########################################################################
+; Tab through windows forwards and backwards
+~CapsLock & .::
+    SwitchWindowsDirectionally(1)
+return
 
-::gp::git pull
+~CapsLock & ,::
+    SwitchWindowsDirectionally(-1)
+return
 
-::ga::git add .
-
-::gc::
-    Send, git commit -m ""
-    Send, {Left}
-Return
-
-::gpu::git push
-
-::gs::git status
-
-::gb::git branch
-
-::gl::git log
-
-::gcb::git checkout -b
-
-::gca::git commit --amend
-
-::gco::git checkout
-
-; ###########################################################################
-; General Hotkeys
-; ###########################################################################
-
-; Reload hotkey file (Useful after a change)
+; Reload hotkey file with Ctrl + Alt + r (Useful after a change)
 ^!r::
-    ToolTip, PROgramming keys reloading
+    ToolTip, Reloading macro
     Sleep 1000
     Reload
     Tooltip
 
-; Suspend and unsuspend hotkeys
+; Suspend and unsuspend hotkeys with Alt + <
 !<:: Suspend
