@@ -204,10 +204,18 @@ SwitchWindowsDirectionally(Direction)
 
 ::gp::git pull
 
+::gprb::git pull --rebase=true
+
 ::ga::git add .
 
 ::gc::
     Send, git commit -m ""
+    Send, {Left}
+Return
+
+!l::
+    Send, console.log("")
+    Send, {Left}
     Send, {Left}
 Return
 
