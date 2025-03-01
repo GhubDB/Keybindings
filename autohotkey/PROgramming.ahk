@@ -214,7 +214,7 @@ SwitchWindowsDirectionally(Direction)
 Return
 
 ::gac::
-    Send, git -am commit -m ""
+    Send, git commit -am ""
     Send, {Left}
 Return
 
