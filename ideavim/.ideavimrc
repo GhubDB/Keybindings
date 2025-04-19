@@ -58,7 +58,7 @@ map <leader>u <Action>(MoveEditorToOppositeTabGroup)
 
 " Display options
 map <leader>dd <action>(ToggleDistractionFreeMode)
- map <leader>z <action>(ToggleZenMode)
+ map <leader>z <action>(TogglePresentationMode)
 
 " Folding
 map <leader>ca :action CollapseAllRegions<CR>
@@ -97,6 +97,7 @@ nmap <leader>gf <Action>(Back)
 nmap <leader>gb <Action>(Forward)
 
 " Git windows
+map <leader>g <Action>(Vcs.RollbackChangedLines)
 map <leader>gs <Action>(ActivateVersionControlToolWindow)
 map <leader>gb <Action>(Git.Branches)
 map <leader>gv <Action>(Compare.SameVersion)
