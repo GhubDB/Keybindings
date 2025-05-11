@@ -238,6 +238,13 @@ Return
 
 ::gco::git checkout
 
+; Opens explorer at current terminal location
+::oex::Start-Process explorer -ArgumentList (Get-Location)
+
+::c.::code .
+
+::cr.::code -r .
+
 ; ###########################################################################
 ; General Hotkeys
 ; ###########################################################################
