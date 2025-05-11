@@ -252,6 +252,22 @@ Return
     insertText("git checkout")
 Return
 
+::gst::
+    insertText("git stash")
+Return
+
+::gstp::
+    insertText("git stash pop")
+Return
+
+::gstl::
+    insertText("git stash list")
+Return
+
+::grsth::
+    insertText("git reset --hard")
+Return
+
 ; General
 ; Opens explorer at current terminal location
 ::oex::Start-Process explorer -ArgumentList (Get-Location)
