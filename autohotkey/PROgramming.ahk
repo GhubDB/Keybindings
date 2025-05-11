@@ -202,11 +202,18 @@ SwitchWindowsDirectionally(Direction)
 ; Text expansions
 ; ###########################################################################
 
-::gp::git pull
+; Git commands
+::gp::
+    insertText("git pull")
+Return
 
-::gprb::git pull --rebase=true
+::gprb::
+    insertText("git pull --rebase=true")
+Return
 
-::ga::git add .
+::ga::
+    insertText("git add .")
+Return
 
 ::gc::
     Send, git commit -m ""
@@ -218,32 +225,58 @@ Return
     Send, {Left}
 Return
 
+::gca::
+    insertText("git commit --amend")
+Return
+::gpu::
+    insertText("git push")
+Return
+
+::gs::
+    insertText("git status")
+Return
+::gb::
+    insertText("git branch")
+Return
+::gbr::
+    insertText("git branch -r")
+Return
+
+::gl::
+    insertText("git log")
+Return
+::gcb::
+    insertText("git checkout -b")
+Return
+::gco::
+    insertText("git checkout")
+Return
+
+; General
+; Opens explorer at current terminal location
+::oex::Start-Process explorer -ArgumentList (Get-Location)
+
+; VsCode
+::c.::code .
+::cr.::code -r .
+
 !l::
     Send, console.log("")
     Send, {Left}
     Send, {Left}
 Return
 
-::gpu::git push
-
-::gs::git status
-
-::gb::git branch
-
-::gl::git log
-
-::gcb::git checkout -b
-
-::gca::git commit --amend
-
-::gco::git checkout
-
-; Opens explorer at current terminal location
-::oex::Start-Process explorer -ArgumentList (Get-Location)
-
-::c.::code .
-
-::cr.::code -r .
+insertText(txt)
+{
+    clipboardContent := RTrim(Clipboard) ;save clipboard to variable
+    Clipboard := txt
+    ClipWait
+    sleep, 100
+    SendInput ^v
+    sleep, 400
+    Clipboard := clipboardContent
+    Return
+}
 
 ; ###########################################################################
 ; General Hotkeys
