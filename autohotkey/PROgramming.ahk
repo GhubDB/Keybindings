@@ -226,7 +226,7 @@ Return
 Return
 
 ::gca::
-    insertText("git commit --amend")
+    insertText("git commit --amend --no-edit")
 Return
 ::gpu::
     insertText("git push")
@@ -235,9 +235,11 @@ Return
 ::gs::
     insertText("git status")
 Return
+
 ::gb::
     insertText("git branch")
 Return
+
 ::gbr::
     insertText("git branch -r")
 Return
@@ -245,15 +247,30 @@ Return
 ::gl::
     insertText("git log")
 Return
+
 ::gcb::
     insertText("git checkout -b")
 Return
+
 ::gco::
     insertText("git checkout")
 Return
 
+::gld::
+    insertText("git log --graph --oneline --decorate")
+Return
+
 ::gst::
     insertText("git stash")
+Return
+
+; Add "name"
+::gstn::
+    insertText("git stash save ")
+Return
+
+::gsta::
+    insertText("git stash apply 0")
 Return
 
 ::gstp::
