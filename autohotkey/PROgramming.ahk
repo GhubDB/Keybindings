@@ -226,8 +226,13 @@ Return
 Return
 
 ::gca::
-    insertText("git commit --amend --no-edit")
+    insertText("git add . && git commit --amend --no-edit")
 Return
+
+::gcane::
+    insertText("git commit --amend")
+Return
+
 ::gpu::
     insertText("git push")
 Return
@@ -304,7 +309,7 @@ insertText(txt)
     clipboardContent := RTrim(Clipboard) ;save clipboard to variable
     Clipboard := txt
     ClipWait
-    sleep, 100
+    sleep, 150
     SendInput ^v
     sleep, 400
     Clipboard := clipboardContent
