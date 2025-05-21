@@ -290,6 +290,10 @@ Return
     insertText("git reset --hard")
 Return
 
+::gdir::
+    insertText("cd C:\GIT\AVA\AVEL_Release")
+Return
+
 ; General
 ; Opens explorer at current terminal location
 ::oex::Start-Process explorer -ArgumentList (Get-Location)
