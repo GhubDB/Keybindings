@@ -1,31 +1,22 @@
+""" https://github.com/VsVim/VsVim/wiki/Settings-Reference
+
 set rnu
 let mapleader="\<space>"
 
 """ VIM UI
-" Always show current position
-set ruler
-" Height of the command bar
-set cmdheight=2
-" Ignore case when searching
-set ignorecase
-" This makes the search case sensitive if uppercase is entered
-set smartcase
-" Highlight search results
-set hlsearch
-" Makes search act like search in modern browsers
-set incsearch
-" Show matching brackets
-set showmatch
-" Turn on wild menu
-set wildmenu
+set ignorecase      " Ignore case in search
+set smartcase       " Case sensitive if capital is used
+set hlsearch        " Highlight search results
+set incsearch       " Incremental search
+set ai              " Auto-indent
+set wrap            " Wrap lines
 
-" Be smart when using tabs
-set smarttab
-
-" Auto indent, smart indent, wrap lines
-set ai
-set si
-set wrap
+" set si              " Smart indent
+" set smarttab        " Be smart about tabs
+" set wildmenu        " Turn on wild menu
+" set showmatch       " Show matching brackets
+" set ruler           " Show position
+" set cmdheight=2     " Command bar height
 
 """ Moving around, tabs, windows and buffers
 " Treat long lines as break lines (useful when moving around in them)
@@ -39,7 +30,6 @@ noremap <C-l> <C-w>l
 " Useful mappings for managing tabs
 noremap <leader>tn :tabnew<cr>
 noremap <leader>to :tabonly<cr>
-noremap <leader>tc :tabclose<cr>
 noremap <leader>tm :tabmove
 
 " Switch CWD to the directory of the open buffer
@@ -52,3 +42,37 @@ set laststatus=2
 """ Edit mappings
 " Remap VIM 0 to first non-blank character
 nnoremap 0 ^
+
+""" VSCode Vim Commands
+" Toggle maximize editor (similar may be to full screen split)
+nnoremap <leader>m :only<CR>
+
+" Toggle Zen mode (close other windows, similar to ":tabonly")
+nnoremap <leader>c :tabonly<CR>
+
+" Split and vsplit (similar to VSCode's split)
+nnoremap <leader>s :split<CR>
+nnoremap <leader>v :vsplit<CR>
+
+" Toggle sidebar visibility (no direct equivalent in Vim)
+" Consider using netrw or similar plugins for similar functionality.
+
+" Toggle breakpoints (no direct equivalent, requires plugin)
+" Git-related commands like diff and revert also require plugins
+
+""" Undo and Redo
+nnoremap u :undo<CR>
+nnoremap <C-r> :redo<CR>
+
+""" Focus Movement (within splits)
+nnoremap <leader>h <C-w>h
+nnoremap <leader>l <C-w>l
+nnoremap <leader>i :vsc Window.MovetoNextTabGroup<cr>
+nnoremap <leader>u :vsc Window.MovetoPreviousTabGroup<cr>
+nnoremap <leader>j :vsc Window.PreviousTab<CR>     
+nnoremap <leader>k :vsc Window.NextTab<CR> 
+" nnoremap <leader>j :vsc Window.PreviousDocumentWindow<CR>     
+" nnoremap <leader>k :vsc Window.NextDocumentWindow<CR> 
+nnoremap <leader>x :vsc Window.CloseDocumentWindow<cr>
+nnoremap <leader>o :vsc Window.NextSplitPane<cr>
+nnoremap <leader>p :vsc Window.PreviousSplitPane<cr>
