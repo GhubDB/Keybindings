@@ -1,0 +1,54 @@
+set rnu
+let mapleader="\<space>"
+
+""" VIM UI
+" Always show current position
+set ruler
+" Height of the command bar
+set cmdheight=2
+" Ignore case when searching
+set ignorecase
+" This makes the search case sensitive if uppercase is entered
+set smartcase
+" Highlight search results
+set hlsearch
+" Makes search act like search in modern browsers
+set incsearch
+" Show matching brackets
+set showmatch
+" Turn on wild menu
+set wildmenu
+
+" Be smart when using tabs
+set smarttab
+
+" Auto indent, smart indent, wrap lines
+set ai
+set si
+set wrap
+
+""" Moving around, tabs, windows and buffers
+" Treat long lines as break lines (useful when moving around in them)
+noremap j gj
+noremap k gk
+" Smart way to move between windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
+" Useful mappings for managing tabs
+noremap <leader>tn :tabnew<cr>
+noremap <leader>to :tabonly<cr>
+noremap <leader>tc :tabclose<cr>
+noremap <leader>tm :tabmove
+
+" Switch CWD to the directory of the open buffer
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+""" Status Line
+" Always show the status line
+set laststatus=2
+
+""" Edit mappings
+" Remap VIM 0 to first non-blank character
+nnoremap 0 ^

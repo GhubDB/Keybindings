@@ -294,6 +294,36 @@ Return
     insertText("cd C:\GIT\AVA\AVEL_Release")
 Return
 
+::pdir::
+    insertText("cd C:\projects")
+Return
+
+::npmdefault::
+    insertText("npm config set registry https://registry.npmjs.org/")
+Return
+
+::npmartifactory::
+    insertText("npm config set registry https://artifactory.swisscom.com/artifactory/api/npm/npm-remote")
+Return
+
+::npmsetproxy::
+    insertText("npm config set proxy http://aproxy.corproot.net:8080/ && npm config set https-proxy https://aproxy.corproot.net:8080/")
+Return
+
+::npmunsetproxy::
+    insertText("npm config delete proxy && npm config delete https-proxy")
+Return
+
+; Terminal
+::checkpath::
+    insertText("echo %PATH%")
+Return
+
+; DevExtreme
+::npmunsetproxy::
+    insertText("npx devextreme add view")
+Return
+
 ; General
 ; Opens explorer at current terminal location
 ::oex::Start-Process explorer -ArgumentList (Get-Location)
