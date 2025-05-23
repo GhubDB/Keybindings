@@ -10,6 +10,7 @@ set hlsearch        " Highlight search results
 set incsearch       " Incremental search
 set ai              " Auto-indent
 set wrap            " Wrap lines
+set clipboard=unnamed
 
 " set si              " Smart indent
 " set smarttab        " Be smart about tabs
@@ -71,8 +72,9 @@ nnoremap <leader>i :vsc Window.MovetoNextTabGroup<cr>
 nnoremap <leader>u :vsc Window.MovetoPreviousTabGroup<cr>
 nnoremap <leader>j :vsc Window.PreviousTab<CR>     
 nnoremap <leader>k :vsc Window.NextTab<CR> 
-" nnoremap <leader>j :vsc Window.PreviousDocumentWindow<CR>     
-" nnoremap <leader>k :vsc Window.NextDocumentWindow<CR> 
 nnoremap <leader>x :vsc Window.CloseDocumentWindow<cr>
 nnoremap <leader>o :vsc Window.NextSplitPane<cr>
 nnoremap <leader>p :vsc Window.PreviousSplitPane<cr>
+
+nnoremap <leader>n :vsc View.NextError<cr>
+nnoremap <leader>b :vsc Debug.ToggleBreakpoint<cr>

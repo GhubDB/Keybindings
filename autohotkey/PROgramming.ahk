@@ -298,6 +298,24 @@ Return
     insertText("cd C:\projects")
 Return
 
+; Docker
+::dup::
+    insertText("docker compose up -d")
+Return
+
+::dbup::
+    insertText("docker compose up -d --build")
+Return
+
+::ddown::
+    insertText("docker compose down")
+Return
+
+::docker build .::
+    insertText("docker build .")
+Return
+
+; NPM
 ::npmdefault::
     insertText("npm config set registry https://registry.npmjs.org/")
 Return
@@ -320,7 +338,7 @@ Return
 Return
 
 ; DevExtreme
-::npmunsetproxy::
+::dadd::
     insertText("npx devextreme add view")
 Return
 
