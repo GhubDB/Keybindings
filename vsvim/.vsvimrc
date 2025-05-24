@@ -1,5 +1,14 @@
 """ https://github.com/VsVim/VsVim/wiki/Settings-Reference
 
+" Useful Visual Studio hotkeys
+" alt+` = open member search"
+" ctrl+q = Code search
+" ctrl+t = feature search
+" Ctrl+Shift+T =   files f: 	
+" Ctrl+1, Ctrl+T = types t: 	
+" Alt+\ = members m: 	
+" Shift+Alt+F = text x: 	
+
 set rnu
 let mapleader="\<space>"
 
@@ -10,6 +19,8 @@ set hlsearch        " Highlight search results
 set incsearch       " Incremental search
 set ai              " Auto-indent
 set wrap            " Wrap lines
+
+" Use System Clipboard
 set clipboard=unnamed
 
 " set si              " Smart indent
@@ -21,24 +32,15 @@ set clipboard=unnamed
 
 """ Moving around, tabs, windows and buffers
 " Treat long lines as break lines (useful when moving around in them)
-noremap j gj
-noremap k gk
-" Smart way to move between windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-h> <C-w>h
-noremap <C-l> <C-w>l
-" Useful mappings for managing tabs
-noremap <leader>tn :tabnew<cr>
-noremap <leader>to :tabonly<cr>
-noremap <leader>tm :tabmove
+nnoremap j gj
+nnoremap k gk
 
 " Switch CWD to the directory of the open buffer
-nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+" nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 """ Status Line
 " Always show the status line
-set laststatus=2
+" set laststatus=2
 
 """ Edit mappings
 " Remap VIM 0 to first non-blank character
@@ -55,12 +57,6 @@ nnoremap <leader>c :tabonly<CR>
 nnoremap <leader>s :split<CR>
 nnoremap <leader>v :vsplit<CR>
 
-" Toggle sidebar visibility (no direct equivalent in Vim)
-" Consider using netrw or similar plugins for similar functionality.
-
-" Toggle breakpoints (no direct equivalent, requires plugin)
-" Git-related commands like diff and revert also require plugins
-
 """ Undo and Redo
 nnoremap u :undo<CR>
 nnoremap <C-r> :redo<CR>
@@ -76,5 +72,19 @@ nnoremap <leader>x :vsc Window.CloseDocumentWindow<cr>
 nnoremap <leader>o :vsc Window.NextSplitPane<cr>
 nnoremap <leader>p :vsc Window.PreviousSplitPane<cr>
 
+" File Navigation
 nnoremap <leader>n :vsc View.NextError<cr>
+nnoremap <leader>r :vsc View.Autosize<cr>
+nnoremap <leader>, :vsc Edit.GoToLastEditLocation<cr>
+nnoremap <leader>. :vsc Edit.GoToNextEditLocation<cr>
+
+" Peeking
+nnoremap <leader>f :vsc Edit.PeekForward<cr>
+nnoremap <leader>d :vsc Edit.PeekDefinition<cr>
+
+" Git commands
+nnoremap <leader>g :vsc Team.Git.RevertSelectedRange<cr>
+nnoremap <leader>z :vsc Edit.PeekDifference<cr>
+
+" Debugging commands
 nnoremap <leader>b :vsc Debug.ToggleBreakpoint<cr>
