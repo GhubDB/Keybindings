@@ -5,6 +5,7 @@
 " ctrl+q = Code search
 " ctrl+t = feature search
 " Ctrl+Shift+T =   files f: 	
+" Ctrl+Shift+O =   members f: 	
 " Ctrl+1, Ctrl+T = types t: 	
 " Alt+\ = members m: 	
 " Shift+Alt+F = text x: 	
@@ -88,3 +89,14 @@ nnoremap <leader>z :vsc Edit.PeekDifference<cr>
 
 " Debugging commands
 nnoremap <leader>b :vsc Debug.ToggleBreakpoint<cr>
+nnoremap <leader>e :vsc View.ErrorList<cr>
+
+" Testing
+" nnoremap <leader>t :vsc ProjectandSolutionContextMenus.Project.ShowinTestExplorer<cr>
+nnoremap <leader>t :vsc TestExplorer.ShowTestExplorer<cr>
+nnoremap <leader>r :vsc TestExplorer.RunAllTests<cr>
+
+" Search
+" nnoremap <leader>as :vsc ClassViewSearch <cr>
+nnoremap <leader>ss :vsc Window.SolutionExplorerSearch<cr>
+nnoremap <leader>as :vsc OtherContextMenus.Searchscope.Entiresolution<cr>

@@ -254,11 +254,11 @@ Return
 Return
 
 ::gcb::
-    insertText("git checkout -b")
+    insertText("git checkout -b ")
 Return
 
 ::gco::
-    insertText("git checkout")
+    insertText("git checkout ")
 Return
 
 ::gld::
