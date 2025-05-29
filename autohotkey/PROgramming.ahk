@@ -332,6 +332,10 @@ Return
     insertText("npm config delete proxy && npm config delete https-proxy")
 Return
 
+::relv::
+    insertText("source C:\Users\taadimo2\.vsvimrc")
+Return
+
 ; Terminal
 ::checkpath::
     insertText("echo %PATH%")
