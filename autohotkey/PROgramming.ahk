@@ -92,13 +92,19 @@ return
     }
 return
 
-~Capslock & j:: Send, (
+~Capslock & j:: Send, {Down}
 Return
 
-~Capslock & k:: Send, )
+~Capslock & k:: Send, {Up}
 Return
 
-~Capslock & l:: Send, "
+~Capslock & h:: Send, {Left}
+Return
+
+~Capslock & l:: Send, {Right}
+Return
+
+~Capslock & s:: Send, "
 Return
 
 ~Capslock & i:: Send, {|}
@@ -122,6 +128,12 @@ Return
 ~Capslock & down:: Send, {LWin down}{Down down}{Down up}{LWin up}
 Return
 
+~CapsLock & ä:: Send )
+Return
+
+~CapsLock & ö:: Send (
+Return
+
 ; Tab through windows forwards and backwards
 ~CapsLock & .::
     SwitchWindowsDirectionally(1)
@@ -130,10 +142,6 @@ return
 ~CapsLock & ,::
     SwitchWindowsDirectionally(-1)
 return
-
-; ;; vim navigation with hyper
-~CapsLock & ä:: Send {Up}
-~CapsLock & ö:: Send {Down}
 
 ManageApp() {
     ; Get the last key from the pressed hotkey
@@ -292,6 +300,10 @@ Return
 
 ::gdir::
     insertText("cd C:\GIT\AVA\AVEL_Release")
+Return
+
+::pdir::
+    insertText("cd C:\projects")
 Return
 
 ::pdir::

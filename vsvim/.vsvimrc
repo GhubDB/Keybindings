@@ -31,7 +31,7 @@ set clipboard=unnamed
 " set smarttab        " Be smart about tabs
 " set wildmenu        " Turn on wild menu
 " set showmatch       " Show matching brackets
-" set ruler           " Show position
+set ruler           " Show position
 " set cmdheight=2     " Command bar height
 
 """ Moving around, tabs, windows and buffers
@@ -89,9 +89,10 @@ nnoremap <leader>ss :vsc Window.SolutionExplorerSearch<cr>
 nnoremap <leader>as :vsc OtherContextMenus.Searchscope.Entiresolution<cr>
 
 """ Git commands
-" nnoremap <leader>g :vsc Team.Git.RevertSelectedRange<cr>
-nnoremap <leader>g :vsc Team.Git.Undo<cr>
+nnoremap <leader>g :vsc Team.Git.RevertSelectedRange<cr>
+" nnoremap <leader>g :vsc Team.Git.Undo<cr>
 nnoremap <leader>z :vsc Edit.PeekDifference<cr>
+nnoremap <leader>w :vsc TeamFoundationContextMenus.SourceControlExplorer.TfsContextExplorerRollback<cr>
 
 """ Debugging commands
 nnoremap <leader>b :vsc Debug.ToggleBreakpoint<cr>
@@ -100,10 +101,12 @@ nnoremap <leader>e :vsc View.ErrorList<cr>
 """ Testing
 " nnoremap <leader>t :vsc ProjectandSolutionContextMenus.Project.ShowinTestExplorer<cr>
 nnoremap <leader>t :vsc TestExplorer.ShowTestExplorer<cr>
-" nnoremap <leader>a :vsc TestExplorer.RunAllTests<cr>
+nnoremap <leader>A :vsc TestExplorer.RunAllTests<cr>
 nnoremap <leader>a :vsc TestExplorer.RunAllTestsInContext<cr>
 nnoremap <leader>R :vsc TestExplorer.DebugAllTestsInContext<cr>
 
 """ Editing
 nnoremap rn :vsc Refactor.Rename<cr>
-nnoremap cia :vsc Refactor.ReorderParameters<cr>
+" nnoremap <leader>c :vsc Refactor.ReorderParameters<cr>
+
+nnoremap <leader>1 :vsc View.SolutionExplorer<cr>
